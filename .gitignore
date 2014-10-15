@@ -1,3 +1,7 @@
+#Debug Folders
+SixenceUseTest/SixenceUseTest/Debug/
+sixense_wrapper/sixense_wrapper/Debug/
+
 # Compiled Object files
 *.slo
 *.lo
@@ -35,7 +39,8 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*

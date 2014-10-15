@@ -1,0 +1,63 @@
+Microsoft (R) COFF/PE Dumper Version 12.00.30723.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file sixense.lib
+
+File Type: LIBRARY
+
+     Exports
+
+       ordinal    name
+
+                  ?getElapsedMilliseconds@sixenseUtils@@YANH@Z (double __cdecl sixenseUtils::getElapsedMilliseconds(int))
+                  ?getTimeInMilliseconds@sixenseUtils@@YANXZ (double __cdecl sixenseUtils::getTimeInMilliseconds(void))
+                  _CreateInterface
+                  _sixenseAutoEnableHemisphereTracking
+                  _sixenseExit
+                  _sixenseGetAllData
+                  _sixenseGetAllNewestData
+                  _sixenseGetBaseColor
+                  _sixenseGetCalibrationEnabled
+                  _sixenseGetData
+                  _sixenseGetDebugParam
+                  _sixenseGetFilterEnabled
+                  _sixenseGetFilterParams
+                  _sixenseGetHemisphereTrackingMode
+                  _sixenseGetHemisphereVector
+                  _sixenseGetHighPriorityBindingEnabled
+                  _sixenseGetHistorySize
+                  _sixenseGetMaxBases
+                  _sixenseGetMaxControllers
+                  _sixenseGetNewestData
+                  _sixenseGetNumActiveControllers
+                  _sixenseGetRawData
+                  _sixenseGetRawDataSingle
+                  _sixenseGetSignalMatrix
+                  _sixenseGetSignalQuality
+                  _sixenseGetTestMode
+                  _sixenseInit
+                  _sixenseIsBaseConnected
+                  _sixenseIsControllerEnabled
+                  _sixensePlaybackLogFile
+                  _sixenseSendTestCommand
+                  _sixenseSetActiveBase
+                  _sixenseSetBaseColor
+                  _sixenseSetCalibrationEnabled
+                  _sixenseSetDebugParam
+                  _sixenseSetFilterEnabled
+                  _sixenseSetFilterParams
+                  _sixenseSetHemisphereTrackingMode
+                  _sixenseSetHemisphereVector
+                  _sixenseSetHighPriorityBindingEnabled
+                  _sixenseSetTestMode
+                  _sixenseTriggerVibration
+
+  Summary
+
+          C3 .debug$S
+          14 .idata$2
+          14 .idata$3
+           4 .idata$4
+           4 .idata$5
+           C .idata$6

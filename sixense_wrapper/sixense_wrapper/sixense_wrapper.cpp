@@ -119,31 +119,35 @@ void normalizeVector3(float* v, float* result){
 }
 
 void invertQuaternion(float* quat, float* result){
-	float norm = quat[0] * quat[0] + quat[1] * quat[1] + quat[2] * quat[2] + quat[3] * quat[3];
-	result[0] = -quat[0]/norm;
-	result[1] = -quat[1] / norm;
-	result[2] = -quat[2] / norm;
+	float norm2 = (quat[0] * quat[0]) + (quat[1] * quat[1]) + (quat[2] * quat[2]) + (quat[3] * quat[3]);
+	result[0] = -quat[0] / norm2;
+	result[1] = -quat[1] / norm2;
+	result[2] = -quat[2] / norm2;
+	result[3] = quat[3] / norm2;
+}
+
+void normalizeQuaternion(float* quat, float* result){
+	float norm = sqrt((quat[0] * quat[0]) + (quat[1] * quat[1]) + (quat[2] * quat[2]) + (quat[3] * quat[3]));
+	result[0] = quat[0] / norm;
+	result[1] = quat[1] / norm;
+	result[2] = quat[2] / norm;
 	result[3] = quat[3] / norm;
 }
 
 void quatToAxisAngle(float* quat,float* axis, float* angle){
-	*angle = (float)(2 * acos(quat[3]));
-	float s = sqrt(1 - (quat[3] * quat[3])); // assuming quaternion normalised then w is less than 1, so term always positive.
+	float normalized[4];
+	normalizeQuaternion(quat,normalized);
+	*angle = (float)(2 * acos(normalized[3]));
+	float s = sqrt(1 - (normalized[3] * normalized[3])); // assuming quaternion normalised then w is less than 1, so term always positive.
 	if (s < 0.001f) {
-		memcpy(axis, quat, 3 * (sizeof(float)));
+		axis[0] = 1;
+		axis[1] = 0;
+		axis[2] = 0;
 	} else {
-		axis[0] = quat[0] / s;
-		axis[1] = quat[1] / s;
-		axis[2] = quat[2] / s;
+		axis[0] = normalized[0] / s;
+		axis[1] = normalized[1] / s;
+		axis[2] = normalized[2] / s;
 	}
-}
-
-void normalizeQuat(float* q, float* result){
-	float norm = sqrt(q[0] * q[0] + q[1] * q[1] + q[2] * q[2] + q[3]*q[3]);
-	result[0] = q[0] / norm;
-	result[1] = q[1] / norm;
-	result[2] = q[2] / norm;
-	result[3] = q[3] / norm;
 }
 
 void axisAngleToQuat(float* quat, float* axis, float angle){
@@ -156,7 +160,7 @@ void axisAngleToQuat(float* quat, float* axis, float angle){
 	quat[1] = s*normalizedAxis[1];
 	quat[2] = s*normalizedAxis[2];
 	quat[3] = c;
-	normalizeQuat(quat, quat);
+	normalizeQuaternion(quat, quat);
 }
 
 void mult_quaternions(float* a, float*b, float* ab){
@@ -164,7 +168,6 @@ void mult_quaternions(float* a, float*b, float* ab){
 	ab[1] = -a[0] * b[2] + a[1] * b[3] + a[2] * b[0] + a[3] * b[1]; //y
 	ab[2] = a[0] * b[1] - a[1] * b[0] + a[2] * b[3] + a[3] * b[2]; //z
 	ab[3] = -a[0] * b[0] - a[1] * b[1] - a[2] * b[2] + a[3] * b[3]; //w
-
 }
 
 float identity_quat[4] = { 0.0f, 0.0f, 0.0f, 1.0f };

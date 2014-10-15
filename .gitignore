@@ -11,7 +11,7 @@ sixense_wrapper/sixense_wrapper/Debug/
 # Compiled Dynamic libraries
 *.so
 *.dylib
-*.dll
+# *.dll
 
 # Fortran module files
 *.mod
